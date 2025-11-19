@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>YS CRM — Server</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>YS CRM — серверная версия (прототип)</h1>
+    <div id="user-info"></div>
+  </header>
+
+  <main id="app">
+    <section id="login-section" class="panel">
+      <h2>Вход</h2>
+      <label>Пользователь: <input id="login-user" value="alexander"></label>
+      <label>Пароль: <input id="login-pass" type="password" value="1234"></label>
+      <button id="btn-login">Войти</button>
+      <p class="muted">Тестовые пользователи: alexander / 1234, tech1 / 1111, tech2 / 2222</p>
+    </section>
+
+    <section id="main-section" class="hidden">
+      <div class="toolbar">
+        <div>
+          <label>Период с: <input type="date" id="filter-from"></label>
+          <label>по: <input type="date" id="filter-to"></label>
+          <button id="btn-filter">Фильтр</button>
+          <button id="btn-reset">Сброс</button>
+        </div>
+        <div class="right">
+          <button id="btn-new-order">Новый заказ</button>
+          <button id="btn-reports">Отчёт</button>
+          <button id="btn-logout">Выйти</button>
+        </div>
+      </div>
+
+      <div id="orders-panel" class="panel">
+        <h2>Заказы</h2>
+        <div id="orders-list" class="orders-list"></div>
+        <div id="pagination" class="pagination"></div>
+      </div>
+
+      <div id="detail-panel" class="panel hidden">
+        <button id="btn-back">◀ Назад</button>
+        <h2>Карточка заказа <span id="detail-id"></span></h2>
+        <div class="detail-grid">
+          <label>Клиент: <input id="detail-name"></label>
+          <label>Тел: <input id="detail-tel"></label>
+          <label>Адрес: <input id="detail-address"></label>
+          <label>Дата/время: <input id="detail-datetime" type="datetime-local"></label>
+          <label>Статус: 
+            <select id="detail-status">
+              <option value="red">Не подтверждён</option>
+              <option value="yellow">Подтверждён</option>
+              <option value="green">Выполнен</option>
+            </select>
+          </label>
+          <label>Услуга: <input id="detail-service"></label>
+          <label>Единицы: <input id="detail-units" type="number"></label>
+          <label>Комментарий: <textarea id="detail-comment"></textarea></label>
+        </div>
+        <div class="detail-actions">
+          <button id="btn-save-order">Сохранить</button>
+          <button id="btn-delete-order">Удалить</button>
+        </div>
+      </div>
+
+      <div id="reports-panel" class="panel hidden">
+        <button id="btn-rep-back">◀ Назад</button>
+        <h2>Отчёт по периоду</h2>
+        <label>С: <input type="date" id="rep-from"></label>
+        <label>По: <input type="date" id="rep-to"></label>
+        <button id="btn-gen-report">Сформировать</button>
+        <div id="report-result"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="muted">Прототип: серверная версия. Для продакшна нужен HTTPS, авторизация и бэкап.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
